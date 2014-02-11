@@ -63,19 +63,20 @@ class PeersController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_peer
-      @peer = Peer.find(params[:id])
-    end
+private
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def peer_params
-      params.require(:peer).permit(:contact_point)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_peer
+    @peer = Peer.find(params[:id])
+  end
 
-    # Set the peer group as we are a nested resource
-    def set_peer_group
-      @peer_group = PeerGroup.friendly.find(params[:peer_group_id])
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def peer_params
+    params.require(:peer).permit(:contact_point)
+  end
+
+  # Set the peer group as we are a nested resource
+  def set_peer_group
+    @peer_group = PeerGroup.friendly.find(params[:peer_group_id])
+  end
 end

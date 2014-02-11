@@ -1,14 +1,18 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
 
-<p>
-  <strong>Contact point:</strong>
-  <%= @peer.contact_point %>
-</p>
+  <h1>Showing basic peer information</h1>
 
-<p>
-  <strong>Peer group:</strong>
-  <%= @peer.peer_group %>
-</p>
+  <p>
+    <strong>Contact point:</strong>
+    <%= @peer.contact_point %>
+  </p>
 
-<%= link_to 'Edit', edit_peer_group_peer_path(@peer_group, @peer) %> |
-<%= link_to 'Back', peer_group_peers_path( @peer_group ) %>
+  <p>
+    <strong>Peer group:</strong>
+    <%= @peer.peer_group %>
+  </p>
+
+  <%= link_to 'Edit', edit_peer_group_peer_path(@peer_group, @peer) %> |
+  <%= link_to 'Back', peer_group_peers_path( @peer_group ) %>
+
+</div>

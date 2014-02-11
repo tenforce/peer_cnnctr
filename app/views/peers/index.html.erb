@@ -1,29 +1,33 @@
-<h1>Listing peers</h1>
+<div class="container">
 
-<table>
-  <thead>
-    <tr>
-      <th>Contact point</th>
-      <th>Peer group</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+  <h1>Listing peers</h1>
 
-  <tbody>
-    <% @peers.each do |peer| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= peer.contact_point %></td>
-        <td><%= peer.peer_group %></td>
-        <td><%= link_to 'Show', [@peer_group,peer] %></td>
-        <td><%= link_to 'Edit', edit_peer_group_peer_path(@peer_group, peer) %></td>
-        <td><%= link_to 'Destroy', [@peer_group,peer], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Contact point</th>
+        <th>Peer group</th>
+        <th></th>
+        <th></th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @peers.each do |peer| %>
+        <tr>
+          <td><%= peer.contact_point %></td>
+          <td><%= peer.peer_group %></td>
+          <td><%= link_to 'Show', [@peer_group,peer] %></td>
+          <td><%= link_to 'Edit', edit_peer_group_peer_path(@peer_group, peer) %></td>
+          <td><%= link_to 'Destroy', [@peer_group,peer], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Peer', new_peer_group_peer_path( @peer_group ) %>
+  <br>
+
+  <%= link_to 'New Peer', new_peer_group_peer_path( @peer_group ) %>
+
+</div>
