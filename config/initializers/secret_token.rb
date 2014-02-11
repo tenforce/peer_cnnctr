@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-PeerCnnctr::Application.config.secret_key_base = 'efc7bee524d061364c126cae647193c393e12b89e019b34ab3f13abeb4964acf3959889610efe9303b152141ec1d305e3365419ef5a3ce0a812c2c80528c4c52'
+PeerCnnctr::Application.config.secret_key_base = '16cb887340df51af4b22dcc3578f4362bf85962090879183c08b50899f1639a65afa5041007e4e8200b5f57bbed74a84fa5618e88d881b18fda9d72880101e09'
