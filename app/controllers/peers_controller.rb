@@ -26,6 +26,7 @@ class PeersController < ApplicationController
   # POST /peers.json
   def create
     @peer = Peer.new(peer_params)
+    @peer.peer_group = @peer_group
 
     respond_to do |format|
       if @peer.save
@@ -70,7 +71,7 @@ class PeersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def peer_params
-      params.require(:peer).permit(:contact_point, :peer_group_id)
+      params.require(:peer).permit(:contact_point)
     end
 
     # Set the peer group as we are a nested resource
