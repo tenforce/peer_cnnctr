@@ -1,0 +1,29 @@
+<h1>Listing peers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Contact point</th>
+      <th>Peer group</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @peers.each do |peer| %>
+      <tr>
+        <td><%= peer.contact_point %></td>
+        <td><%= peer.peer_group %></td>
+        <td><%= link_to 'Show', peer %></td>
+        <td><%= link_to 'Edit', edit_peer_path(peer) %></td>
+        <td><%= link_to 'Destroy', peer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Peer', new_peer_path %>

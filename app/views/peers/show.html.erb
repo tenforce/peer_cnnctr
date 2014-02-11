@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Contact point:</strong>
+  <%= @peer.contact_point %>
+</p>
+
+<p>
+  <strong>Peer group:</strong>
+  <%= @peer.peer_group %>
+</p>
+
+<%= link_to 'Edit', edit_peer_group_peer_path(@peer_group, @peer) %> |
+<%= link_to 'Back', peer_group_peers_path( @peer_group ) %>

@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>Listing peer_groups</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Key</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @peer_groups.each do |peer_group| %>
+        <tr>
+          <td><%= peer_group.key %></td>
+          <td><%= link_to 'Show', peer_group %></td>
+          <td><%= link_to 'Edit', edit_peer_group_path(peer_group) %></td>
+          <td><%= link_to 'Destroy', peer_group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Peer group', new_peer_group_path %>
+</div>
+

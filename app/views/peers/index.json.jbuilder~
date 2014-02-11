@@ -1,0 +1,4 @@
+json.array!(@peers) do |peer|
+  json.extract! peer, :id, :contact_point, :peer_group_id
+  json.url peer_url(peer, format: :json)
+end

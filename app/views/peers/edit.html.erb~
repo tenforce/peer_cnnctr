@@ -1,0 +1,6 @@
+<h1>Editing peer</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @peer %> |
+<%= link_to 'Back', peers_path %>

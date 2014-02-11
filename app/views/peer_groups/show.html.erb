@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Peer group</h1>
+
+  <p>This is a peer group with <%= @peer_group.key %> as its key.  It has <%= link_to "#{@peer_group.peers.count} connected peers.", peer_group_peers_path( @peer_group )  %></p>
+
+  <%= link_to 'Edit', edit_peer_group_path(@peer_group) %> |
+  <%= link_to 'Back', peer_groups_path %>
+
+</div>

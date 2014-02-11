@@ -1,0 +1,9 @@
+<%= simple_form_for(@peer_group) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="input_group">
+    <%= f.input :key %>
+  </div>
+  <%= f.button :submit %>
+
+<% end %>

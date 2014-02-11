@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @peer_group.key %>
+</p>
+
+<%= link_to 'Edit', edit_peer_group_path(@peer_group) %> |
+<%= link_to 'Back', peer_groups_path %>

@@ -1,0 +1,6 @@
+<h1>Editing peer_group</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @peer_group %> |
+<%= link_to 'Back', peer_groups_path %>
