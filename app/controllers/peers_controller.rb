@@ -75,6 +75,6 @@ class PeersController < ApplicationController
 
     # Set the peer group as we are a nested resource
     def set_peer_group
-      @peer_group = PeerGroup.find(params[:peer_group_id])
+      @peer_group = PeerGroup.friendly.find(params[:peer_group_id])
     end
 end

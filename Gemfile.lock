@@ -73,6 +73,8 @@ GEM
       bundler (~> 1.0)
       rails (>= 3, < 5)
     formatador (0.2.4)
+    friendly_id (5.0.2)
+      activerecord (~> 4.0.0)
     guard (2.4.0)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -217,6 +219,7 @@ DEPENDENCIES
   email_spec
   factory_girl_rails
   figaro
+  friendly_id (~> 5.0.0)
   guard-bundler
   guard-rails
   guard-rspec
