@@ -1,4 +1,6 @@
 class PeersController < ApplicationController
+  skip_before_filter :verify_authenticity_token
+
   before_action :set_peer_group
   before_action :set_peer, only: [:show, :edit, :update, :destroy]
 
@@ -31,7 +33,7 @@ class PeersController < ApplicationController
     respond_to do |format|
       if @peer.save
         format.html { redirect_to [@peer_group,@peer], notice: 'Peer was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @peer }
+        format.json { render action: 'show', status: :created }
       else
         format.html { render action: 'new' }
         format.json { render json: @peer.errors, status: :unprocessable_entity }
