@@ -1,8 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
 gem 'rails', '4.0.2'
-gem 'sqlite3' # require both so we can switch later
-gem 'pg'      # require both so we can switch later
+gem 'sqlite3'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
