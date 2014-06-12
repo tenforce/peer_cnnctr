@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140211124701) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20140612094614) do
 
   create_table "peer_groups", force: true do |t|
     t.string   "key"
@@ -27,8 +24,9 @@ ActiveRecord::Schema.define(version: 20140211124701) do
     t.integer  "peer_group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "shared_contact_url"
   end
 
-  add_index "peers", ["peer_group_id"], name: "index_peers_on_peer_group_id", using: :btree
+  add_index "peers", ["peer_group_id"], name: "index_peers_on_peer_group_id"
 
 end

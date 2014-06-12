@@ -74,7 +74,7 @@ private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def peer_params
-    params.require(:peer).permit(:contact_point)
+    params.require(:peer).permit(:contact_point, :shared_contact_url)
   end
 
   # Set the peer group as we are a nested resource
