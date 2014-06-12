@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140612094614) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "peer_groups", force: true do |t|
     t.string   "key"
     t.datetime "created_at"
@@ -27,6 +30,6 @@ ActiveRecord::Schema.define(version: 20140612094614) do
     t.string   "shared_contact_url"
   end
 
-  add_index "peers", ["peer_group_id"], name: "index_peers_on_peer_group_id"
+  add_index "peers", ["peer_group_id"], name: "index_peers_on_peer_group_id", using: :btree
 
 end
