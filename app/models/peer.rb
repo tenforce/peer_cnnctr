@@ -1,12 +1,12 @@
 class Peer < ActiveRecord::Base
   belongs_to :peer_group
 
-  around_create :notify_peers_we_joined
-  around_destroy :notify_peers_we_left
+  after_create :notify_peers_we_joined
+  after_destroy :notify_peers_we_left
 
   # Retrieves all piers which aren't me
   def peers
-    peer_group.peers.reject { |item| item.id == id }
+    peer_group.peers.without self
   end
 
 protected
@@ -18,9 +18,7 @@ protected
 
   # Notify all our peers that we have joined
   def notify_peers_we_joined
-    others = peers
-    yield
-    others.each do |other|
+    peers.each do |other|
       Spawnling.new do
         begin
           res = Net::HTTP.post_form(other.contact_point_uri, joined: shared_contact_url)
@@ -34,12 +32,10 @@ protected
 
   # Notify all peers that we have left the group
   def notify_peers_we_left
-    others = peers
-    yield
-    others.each do |other|
+    peers.each do |other|
       Spawnling.new do
         begin
-          res = Net::HTTP.post_form(other.contact_point_uri, left: contact_point)
+          res = Net::HTTP.post_form(other.contact_point_uri, left: shared_contact_url)
           assert res.is_a? Net::HTTPSuccess
         rescue
           other.destroy!
@@ -52,6 +48,11 @@ protected
     unless condition
       raise "#{condition} is not true!"
     end
+  end
+
+  # Retrieves all peers from a fresh relationship
+  def fresh_peers
+    peer_group.peers.reload.without self
   end
 
 end
