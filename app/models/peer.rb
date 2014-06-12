@@ -23,13 +23,8 @@ protected
     others.each do |other|
       Spawnling.new do
         begin
-          res = Net::HTTP.post_form(other.contact_point_uri, joined: contact_point)
-          if res.is_a?(Net::HTTPSuccess)
-            puts "#{other.contact_point_uri} responded happily"
-          else
-            puts "#{other.contact_point_uri} responded sadly"
-            other.destroy!
-          end
+          res = Net::HTTP.post_form(other.contact_point_uri, joined: shared_contact_url)
+          assert res.is_a? Net::HTTPSuccess
         rescue
           other.destroy!
         end
@@ -45,16 +40,17 @@ protected
       Spawnling.new do
         begin
           res = Net::HTTP.post_form(other.contact_point_uri, left: contact_point)
-          if res.is_a?(Net::HTTPSuccess)
-            puts "#{other.contact_point_uri} responded happily"
-          else
-            puts "#{other.contact_point_uri} responded sadly"
-            other.destroy!
-          end
+          assert res.is_a? Net::HTTPSuccess
         rescue
           other.destroy!
         end
       end
+    end
+  end
+
+  def assert( condition )
+    unless condition
+      raise "#{condition} is not true!"
     end
   end
 
