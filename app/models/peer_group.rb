@@ -10,4 +10,8 @@ class PeerGroup < ActiveRecord::Base
   def to_s
     key
   end
+
+  def to_param
+    key
+  end
 end

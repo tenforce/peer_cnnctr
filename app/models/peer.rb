@@ -1,12 +1,18 @@
 class Peer < ActiveRecord::Base
   belongs_to :peer_group
 
+  validates_presence_of :peer_group
   after_create :notify_peers_we_joined
   after_destroy :notify_peers_we_left
 
   # Retrieves all piers which aren't me
   def peers
     peer_group.peers.without self
+  end
+
+  # Retrieves all peers from a fresh relationship
+  def fresh_peers
+    peer_group.peers.reload.without self
   end
 
 protected
@@ -48,11 +54,6 @@ protected
     unless condition
       raise "#{condition} is not true!"
     end
-  end
-
-  # Retrieves all peers from a fresh relationship
-  def fresh_peers
-    peer_group.peers.reload.without self
   end
 
 end

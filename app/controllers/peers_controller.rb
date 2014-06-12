@@ -7,7 +7,7 @@ class PeersController < ApplicationController
   # GET /peers
   # GET /peers.json
   def index
-    @peers = Peer.all
+    @peers = @peer_group.peers
   end
 
   # GET /peers/1
@@ -33,7 +33,7 @@ class PeersController < ApplicationController
     respond_to do |format|
       if @peer.save
         format.html { redirect_to [@peer_group,@peer], notice: 'Peer was successfully created.' }
-        format.json { render action: 'show', status: :created }
+        format.json { render json: { peers: @peer.fresh_peers.map( &:shared_contact_url) }, status: :created }
       else
         format.html { render action: 'new' }
         format.json { render json: @peer.errors, status: :unprocessable_entity }
@@ -65,7 +65,7 @@ class PeersController < ApplicationController
     end
   end
 
-private
+  private
 
   # Use callbacks to share common setup or constraints between actions.
   def set_peer
@@ -79,6 +79,6 @@ private
 
   # Set the peer group as we are a nested resource
   def set_peer_group
-    @peer_group = PeerGroup.friendly.find(params[:peer_group_id])
+    @peer_group = PeerGroup.friendly.find_by_key(params[:peer_group_id])
   end
 end
