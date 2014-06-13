@@ -1,7 +1,9 @@
+# -*- coding: utf-8 -*-
 class Peer < ActiveRecord::Base
   belongs_to :peer_group
 
   validates_presence_of :peer_group
+  before_create :delete_peers_with_same_name
   after_create :notify_peers_we_joined
   after_destroy :notify_peers_we_left
 
@@ -48,6 +50,14 @@ protected
         end
       end
     end
+  end
+
+  # If a peer has the same name as us, it means we have disconnected and are
+  # reconnecting.  We delete (but not destroy), the peers with the same name.
+  # This ensures the callbacks aren't called to deregister ourselves from our
+  # peers, but it does allow us to reintroduce ourselves soon after.
+  def delete_peers_with_same_name
+    Peer.find_all_by_contact_point( self.contact_point ).each do |peer| peer.delete end
   end
 
   def assert( condition )
