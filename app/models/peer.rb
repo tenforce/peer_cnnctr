@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 class Peer < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :shared_contact_url
+
   belongs_to :peer_group
 
   validates_presence_of :peer_group
@@ -15,6 +18,10 @@ class Peer < ActiveRecord::Base
   # Retrieves all peers from a fresh relationship
   def fresh_peers
     peer_group.peers.reload.without self
+  end
+
+  def to_param
+    Rack::Utils.escape contact_point
   end
 
 protected

@@ -69,7 +69,7 @@ class PeersController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def set_peer
-    @peer = Peer.find(params[:id])
+    @peer = Peer.find_by_contact_point CGI::unescape params[:id]
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
