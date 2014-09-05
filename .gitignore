@@ -88,3 +88,4 @@ pickle-email-*.html
 # Ignore emacs artifacts
 *~
 
+/README.html
